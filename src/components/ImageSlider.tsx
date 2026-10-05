@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -16,7 +16,7 @@ type ImageSliderProps = {
   images: SliderImage[];
   className?: string;
   imageClassName?: string;
-  children?: React.ReactNode;
+  children?: ReactNode;
   label: string;
   interval?: number;
 };
