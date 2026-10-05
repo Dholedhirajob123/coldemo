@@ -11,7 +11,7 @@ const DASHBOARD_LINKS = [
 
 export function HomeDashboard() {
   return (
-    <aside className="overflow-hidden rounded-lg border border-border bg-card shadow-sm" aria-labelledby="dashboard-title">
+    <aside className="interactive-lift overflow-hidden rounded-lg border border-border bg-card shadow-sm" aria-labelledby="dashboard-title">
       <div className="flex items-center gap-3 bg-navy px-5 py-4 text-navy-foreground">
         <LayoutDashboard className="h-5 w-5 text-orange" />
         <h2 id="dashboard-title" className="text-lg font-bold">Dashboard</h2>
@@ -21,10 +21,10 @@ export function HomeDashboard() {
           <Link
             key={item.to}
             to={item.to}
-            className="group flex min-h-20 items-center gap-3 px-5 py-4 transition-colors hover:bg-sky focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+            className="group flex min-h-20 items-center gap-3 px-5 py-4 transition-all duration-300 hover:bg-sky hover:pl-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
           >
             <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-sky text-royal group-hover:bg-background">
-              <item.icon className="h-5 w-5" />
+              <item.icon className="h-5 w-5 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3" />
             </span>
             <span className="min-w-0 flex-1">
               <span className="block font-semibold text-foreground">{item.label}</span>

@@ -31,6 +31,7 @@ export function ImageSlider({
 }: ImageSliderProps) {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [cycle, setCycle] = useState(0);
 
   useEffect(() => {
     if (paused || images.length < 2) return;
@@ -44,6 +45,7 @@ export function ImageSlider({
 
   const goTo = (index: number) => {
     setActive((index + images.length) % images.length);
+    setCycle((current) => current + 1);
   };
 
   const getSlidePosition = (index: number) => {
@@ -82,6 +84,16 @@ export function ImageSlider({
           />
         ))}
       </div>
+
+      {!paused && images.length > 1 && (
+        <div className="absolute left-0 right-0 top-0 z-20 h-1 bg-navy-foreground/15" aria-hidden="true">
+          <span
+            key={`${active}-${cycle}`}
+            className="block h-full origin-left bg-orange motion-reduce:hidden"
+            style={{ animation: `slider-progress ${interval}ms linear forwards` }}
+          />
+        </div>
+      )}
 
       {children}
 

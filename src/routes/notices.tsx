@@ -57,7 +57,7 @@ function NoticesPage() {
 
         <div className="mt-8 space-y-3">
           {list.map((n) => (
-            <div key={n.title} className="rounded-xl border border-border bg-card p-5 shadow-sm">
+            <div key={n.title} className="interactive-lift rounded-xl border border-border bg-card p-5 shadow-sm">
               <div className="flex flex-wrap items-center gap-2 text-xs">
                 <Bell className="h-4 w-4 text-orange" />
                 <span className="rounded-full bg-teal/15 px-2 py-0.5 font-medium text-teal">{n.category}</span>

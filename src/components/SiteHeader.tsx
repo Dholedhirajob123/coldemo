@@ -61,7 +61,7 @@ export function SiteHeader() {
               alt="Rajashri College of Nursing logo"
               width={800}
               height={800}
-              className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
+              className="logo-float h-full w-full object-contain drop-shadow-md transition-transform duration-300 group-hover:scale-110"
             />
           </Link>
 
@@ -99,7 +99,7 @@ export function SiteHeader() {
                 key={item.to}
                 to={item.to}
                 activeOptions={{ exact: item.to === "/" }}
-                className="px-3 py-2.5 text-sm font-medium text-navy-foreground/85 hover:bg-royal hover:text-navy-foreground"
+                className="relative px-3 py-2.5 text-sm font-medium text-navy-foreground/85 transition-all duration-300 after:absolute after:bottom-0 after:left-1/2 after:h-0.5 after:w-0 after:bg-orange after:transition-all after:duration-300 hover:bg-royal hover:text-navy-foreground hover:after:left-3 hover:after:w-[calc(100%-1.5rem)]"
                 activeProps={{ className: "bg-royal text-navy-foreground" }}
               >
                 {item.label}
@@ -110,7 +110,7 @@ export function SiteHeader() {
 
         {/* Mobile nav */}
         {open && (
-          <nav className="border-t border-border bg-navy lg:hidden">
+          <nav className="animate-slide-in-right border-t border-border bg-navy lg:hidden">
             <div className="flex flex-col px-4 py-2">
               {NAV.map((item) => (
                 <Link

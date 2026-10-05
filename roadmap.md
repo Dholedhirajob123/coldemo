@@ -5,3 +5,7 @@
 - [x] Refine both image sliders with an attractive 3D transition
 - [x] Improve the website’s overall visual polish consistently
 - [x] Verify desktop and mobile layouts
+- [x] Add shared scroll entrance effects across all pages
+- [x] Add polished image, slider, logo, navigation, card, and dashboard motion
+- [x] Respect reduced-motion accessibility preferences
+- [x] Verify the animation update on desktop and mobile
