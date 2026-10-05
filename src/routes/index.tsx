@@ -57,18 +57,18 @@ const COURSE_SLIDES: SliderImage[] = [
 function Index() {
   return (
     <div>
-      <ImageSlider images={SLIDES} label="College highlights" className="min-h-[520px] bg-navy text-navy-foreground md:min-h-[590px]">
+      <ImageSlider images={SLIDES} label="College highlights" className="min-h-[480px] bg-navy text-navy-foreground sm:min-h-[520px] md:min-h-[590px]">
         <div className="absolute inset-0 z-10 bg-navy/65" />
-        <div className="relative z-10 mx-auto flex min-h-[520px] max-w-7xl flex-col items-center justify-center px-16 py-20 text-center md:min-h-[590px] md:px-24">
-          <p className="text-sm font-semibold uppercase tracking-widest text-teal">
+        <div className="relative z-10 mx-auto flex min-h-[480px] max-w-7xl flex-col items-center justify-center px-12 py-16 text-center sm:min-h-[520px] sm:px-16 md:min-h-[590px] md:px-24 md:py-20">
+          <p className="text-xs font-semibold uppercase text-teal sm:text-sm">
             Approved by Govt. of Maharashtra &amp; MUHS Nashik
           </p>
-          <h1 className="mt-4 max-w-5xl text-4xl font-bold leading-tight md:text-6xl">Rajashri College of Nursing, Mehkar</h1>
-          <p className="mt-4 text-xl font-medium text-navy-foreground/90">Excellence in Nursing Education</p>
-          <p className="mx-auto mt-3 max-w-2xl text-navy-foreground/70">
+          <h1 className="mt-4 max-w-5xl text-3xl font-bold leading-tight sm:text-4xl md:text-6xl">Rajashri College of Nursing, Mehkar</h1>
+          <p className="mt-4 text-lg font-medium text-navy-foreground/90 sm:text-xl">Excellence in Nursing Education</p>
+          <p className="mx-auto mt-3 hidden max-w-2xl text-navy-foreground/70 sm:block">
             Building skilled, compassionate and confident healthcare professionals for tomorrow.
           </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
+          <div className="mt-7 grid w-full max-w-xs gap-2 sm:flex sm:max-w-none sm:flex-wrap sm:justify-center sm:gap-3">
             <Link to="/admission" className="rounded-md bg-orange px-6 py-3 font-semibold text-orange-foreground hover:opacity-90">
               Apply Now
             </Link>
@@ -82,11 +82,11 @@ function Index() {
         </div>
       </ImageSlider>
 
-      <section className="mx-auto max-w-7xl px-4 py-16">
+      <section className="mx-auto max-w-7xl px-4 py-10 sm:py-16">
         <div className="grid items-stretch gap-6 lg:grid-cols-[minmax(0,1fr)_340px]">
           <div>
-            <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
-              <div>
+            <div className="mb-5 grid grid-cols-[minmax(0,1fr)_auto] items-end gap-3">
+              <div className="min-w-0">
                 <p className="text-sm font-semibold uppercase tracking-widest text-teal">Our programme</p>
                 <h2 className="mt-1 text-3xl font-bold text-navy">B.Sc. Nursing</h2>
                 <p className="mt-1 text-muted-foreground">Learning, clinical practice and a rewarding healthcare career.</p>
@@ -99,11 +99,11 @@ function Index() {
               images={COURSE_SLIDES}
               label="B.Sc. Nursing programme"
               interval={4200}
-              className="min-h-[360px] rounded-lg border border-border bg-navy md:min-h-[430px]"
+              className="min-h-[300px] rounded-lg border border-border bg-navy sm:min-h-[360px] md:min-h-[430px]"
             >
               <div className="absolute inset-0 z-10 bg-navy/20" />
-              <div className="absolute bottom-10 left-16 right-16 z-10 text-navy-foreground md:left-20">
-                <p className="text-sm font-semibold uppercase tracking-widest text-teal">Four-year degree programme</p>
+              <div className="absolute bottom-10 left-14 right-14 z-10 text-navy-foreground sm:left-16 sm:right-16 md:left-20">
+                <p className="text-xs font-semibold uppercase text-teal sm:text-sm">Four-year degree programme</p>
                 <p className="mt-1 text-2xl font-bold">Study. Practise. Care.</p>
               </div>
             </ImageSlider>
@@ -136,7 +136,7 @@ function Index() {
       {/* Latest notices */}
       <section className="bg-sky py-14">
         <div className="mx-auto max-w-7xl px-4">
-          <div className="flex items-center justify-between">
+          <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
             <h2 className="flex items-center gap-2 text-2xl font-bold text-navy">
               <Bell className="h-6 w-6 text-orange" /> Latest Notices
             </h2>

@@ -33,8 +33,8 @@ function FeeStructurePage() {
 
       <section className="mx-auto max-w-3xl px-4 py-14">
         <PageBackButton />
-        <div className="overflow-hidden rounded-xl border border-border bg-card shadow-sm">
-          <table className="w-full text-sm">
+        <div className="overflow-x-auto rounded-xl border border-border bg-card shadow-sm">
+          <table className="w-full min-w-[520px] text-sm">
             <thead>
               <tr className="bg-navy text-left text-navy-foreground">
                 <th className="px-5 py-3 font-semibold">Particulars</th>

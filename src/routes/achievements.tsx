@@ -33,10 +33,10 @@ function AchievementsPage() {
       </section>
 
       <section className="mx-auto max-w-4xl px-4 py-14">
-        <div className="relative space-y-6 before:absolute before:left-5 before:top-0 before:h-full before:w-0.5 before:bg-border">
+        <div className="relative space-y-6 before:absolute before:left-4 before:top-0 before:h-full before:w-0.5 before:bg-border sm:before:left-5">
           {ITEMS.map((a) => (
-            <div key={a.title} className="relative pl-14">
-              <span className="absolute left-0 top-1 flex h-10 w-10 items-center justify-center rounded-full bg-orange text-orange-foreground">
+            <div key={a.title} className="relative pl-11 sm:pl-14">
+              <span className="absolute left-0 top-1 flex h-8 w-8 items-center justify-center rounded-full bg-orange text-orange-foreground sm:h-10 sm:w-10">
                 <a.icon className="h-5 w-5" />
               </span>
               <div className="rounded-xl border border-border bg-card p-5 shadow-sm">

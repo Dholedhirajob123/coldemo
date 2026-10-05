@@ -27,13 +27,13 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50">
       {/* Top info bar */}
       <div className="bg-navy text-navy-foreground">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2 px-4 py-1.5 text-xs">
-          <div className="flex flex-wrap items-center gap-4">
+        <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-2 px-3 py-1.5 text-[11px] sm:px-4 sm:text-xs">
+          <div className="flex min-w-0 items-center gap-3 sm:gap-4">
             <a href="tel:9881851514" className="flex items-center gap-1 hover:opacity-80">
-              <Phone className="h-3 w-3" /> 9881851514
+              <Phone className="h-3 w-3 shrink-0" /> <span className="whitespace-nowrap">9881851514</span>
             </a>
-            <a href="mailto:rajshreensgmehkar@gmail.com" className="flex items-center gap-1 hover:opacity-80">
-              <Mail className="h-3 w-3" /> rajshreensgmehkar@gmail.com
+            <a href="mailto:rajshreensgmehkar@gmail.com" className="hidden min-w-0 items-center gap-1 hover:opacity-80 sm:flex">
+              <Mail className="h-3 w-3 shrink-0" /> <span className="truncate">rajshreensgmehkar@gmail.com</span>
             </a>
             <span className="hidden items-center gap-1 md:flex">
               <MapPin className="h-3 w-3" /> Mehkar, Dist. Buldhana, Maharashtra – 443301
@@ -41,7 +41,7 @@ export function SiteHeader() {
           </div>
           <Link
             to="/admission"
-            className="rounded-full bg-orange px-3 py-0.5 font-semibold text-orange-foreground hover:opacity-90"
+            className="shrink-0 rounded-full bg-orange px-2.5 py-1 font-semibold text-orange-foreground hover:opacity-90 sm:px-3"
           >
             Admission Enquiry
           </Link>
@@ -80,14 +80,15 @@ export function SiteHeader() {
             </span>
           </Link>
 
-          <span className="hidden h-20 w-20 sm:block" aria-hidden="true" />
-          <button
-            className="justify-self-end rounded-md border border-border p-2 text-navy lg:hidden"
-            onClick={() => setOpen(!open)}
-            aria-label="Toggle menu"
-          >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
+          <div className="flex h-11 w-11 shrink-0 items-center justify-end sm:h-20 sm:w-20">
+            <button
+              className="rounded-md border border-border p-2 text-navy lg:hidden"
+              onClick={() => setOpen(!open)}
+              aria-label="Toggle menu"
+            >
+              {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
+          </div>
         </div>
 
         {/* Desktop nav */}

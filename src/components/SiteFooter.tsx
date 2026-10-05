@@ -1,16 +1,15 @@
 import { Link } from "@tanstack/react-router";
-import { GraduationCap, Phone, Mail, MapPin, Facebook, Instagram, Youtube } from "lucide-react";
+import { Phone, Mail, MapPin, Facebook, Instagram, Youtube } from "lucide-react";
+import collegeLogo from "@/assets/rajashri-college-logo.jpeg.asset.json";
 
 export function SiteFooter() {
   return (
     <footer className="bg-navy text-navy-foreground">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 md:grid-cols-2 lg:grid-cols-4">
         <div>
-          <div className="flex items-center gap-2">
-            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-royal">
-              <GraduationCap className="h-6 w-6" />
-            </span>
-            <span className="font-bold">Rajashri College of Nursing</span>
+          <div className="flex min-w-0 items-center gap-3">
+            <img src={collegeLogo.url} alt="" width={800} height={800} loading="lazy" className="h-14 w-14 shrink-0 rounded-md bg-background object-contain p-0.5" />
+            <span className="min-w-0 font-bold leading-tight">Rajashri College of Nursing</span>
           </div>
           <p className="mt-3 text-sm text-navy-foreground/70">
             Building skilled, compassionate and confident healthcare professionals for tomorrow.
@@ -53,7 +52,7 @@ export function SiteFooter() {
                 <Phone className="h-4 w-4" /> 7218298534
               </a>
             </li>
-            <li className="flex items-center gap-2"><Mail className="h-4 w-4" /> rajshreensgmehkar@gmail.com</li>
+            <li><a href="mailto:rajshreensgmehkar@gmail.com" className="flex min-w-0 items-center gap-2 hover:text-orange"><Mail className="h-4 w-4 shrink-0" /><span className="break-all">rajshreensgmehkar@gmail.com</span></a></li>
           </ul>
           <div className="mt-4 flex gap-4 text-sm">
             <Link to="/notices" className="hover:text-orange">Notices</Link>
