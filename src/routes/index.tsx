@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { GraduationCap, Clock, BookOpen, BadgeCheck, FileText, Bell, ArrowRight, FileCheck, Star, Briefcase, CheckCircle2 } from "lucide-react";
+import { GraduationCap, Clock, BookOpen, BadgeCheck, FileText, Bell, ArrowRight, FileCheck, Star, Briefcase, CheckCircle2, ShieldCheck, Building2, Sparkles, Users, HeartPulse, Landmark } from "lucide-react";
 import { HomeDashboard } from "@/components/HomeDashboard";
 import { ImageSlider, type SliderImage } from "@/components/ImageSlider";
 import campusImage from "@/assets/nursing-campus.jpg";
