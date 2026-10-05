@@ -201,6 +201,10 @@
   filter: saturate(1.05) contrast(1.02);
 }
 
+.slider-3d-active {
+  animation: slider-cinematic-drift 7s ease-out both;
+}
+
 @utility slider-3d-exit-left {
   pointer-events: none;
   opacity: 0;
@@ -215,8 +219,87 @@
   filter: saturate(0.8);
 }
 
+@keyframes slider-cinematic-drift {
+  from {
+    transform: translate3d(0, 0, 0) rotateY(0deg) scale(1.01);
+  }
+  to {
+    transform: translate3d(0, 0, 0) rotateY(0deg) scale(1.075);
+  }
+}
+
+@keyframes slider-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes logo-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.motion-reveal {
+  opacity: 0;
+  transform: translateY(28px) scale(0.985);
+  transition:
+    opacity 700ms cubic-bezier(0.22, 1, 0.36, 1) var(--motion-delay, 0ms),
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1) var(--motion-delay, 0ms);
+}
+
+.motion-reveal.motion-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.interactive-lift {
+  transition: transform 300ms ease, box-shadow 300ms ease, border-color 300ms ease;
+}
+
+.interactive-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-elevated);
+  border-color: color-mix(in oklab, var(--teal) 60%, var(--border));
+}
+
+.image-hover-zoom {
+  overflow: hidden;
+}
+
+.image-hover-zoom img {
+  transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1), filter 500ms ease;
+}
+
+.image-hover-zoom:hover img {
+  transform: scale(1.055);
+  filter: saturate(1.08) contrast(1.03);
+}
+
+.logo-float {
+  animation: logo-float 4s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .slider-3d-slide {
     transition-duration: 1ms;
+    animation: none;
+  }
+
+  .motion-reveal,
+  .motion-reveal.motion-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .interactive-lift,
+  .interactive-lift:hover,
+  .image-hover-zoom img,
+  .image-hover-zoom:hover img {
+    transform: none;
+    transition: none;
+  }
+
+  .logo-float {
+    animation: none;
   }
 }

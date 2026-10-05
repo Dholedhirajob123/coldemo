@@ -8,16 +8,16 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 md:grid-cols-2 lg:grid-cols-4">
         <div>
           <div className="flex min-w-0 items-center gap-3">
-            <img src={collegeLogo.url} alt="" width={800} height={800} loading="lazy" className="h-14 w-14 shrink-0 rounded-md bg-background object-contain p-0.5" />
+            <img src={collegeLogo.url} alt="" width={800} height={800} loading="lazy" className="h-14 w-14 shrink-0 rounded-md bg-background object-contain p-0.5 transition-transform duration-300 hover:rotate-3 hover:scale-110" />
             <span className="min-w-0 font-bold leading-tight">Rajashri College of Nursing</span>
           </div>
           <p className="mt-3 text-sm text-navy-foreground/70">
             Building skilled, compassionate and confident healthcare professionals for tomorrow.
           </p>
           <div className="mt-4 flex gap-3">
-            <Facebook className="h-5 w-5 cursor-pointer hover:text-orange" />
-            <Instagram className="h-5 w-5 cursor-pointer hover:text-orange" />
-            <Youtube className="h-5 w-5 cursor-pointer hover:text-orange" />
+            <Facebook className="h-5 w-5 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:scale-110 hover:text-orange" />
+            <Instagram className="h-5 w-5 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:scale-110 hover:text-orange" />
+            <Youtube className="h-5 w-5 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:scale-110 hover:text-orange" />
           </div>
         </div>
 
