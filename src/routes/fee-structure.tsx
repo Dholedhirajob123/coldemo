@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Download } from "lucide-react";
+import { PageBackButton } from "@/components/PageBackButton";
 
 export const Route = createFileRoute("/fee-structure")({
   head: () => ({
@@ -31,6 +32,7 @@ function FeeStructurePage() {
       </section>
 
       <section className="mx-auto max-w-3xl px-4 py-14">
+        <PageBackButton />
         <div className="overflow-hidden rounded-xl border border-border bg-card shadow-sm">
           <table className="w-full text-sm">
             <thead>
