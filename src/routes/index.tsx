@@ -46,7 +46,13 @@ const SLIDES: SliderImage[] = [
   { src: graduationImage, alt: "B.Sc. Nursing graduates celebrating their achievement" },
 ];
 
-const COURSE_SLIDES: SliderImage[] = [SLIDES[1], SLIDES[2], SLIDES[3], SLIDES[0], SLIDES[4]];
+const COURSE_SLIDES: SliderImage[] = [
+  { src: labImage, alt: "B.Sc. Nursing students practicing in the clinical skills laboratory" },
+  { src: classroomImage, alt: "Nursing students learning anatomy in a classroom" },
+  { src: clinicalImage, alt: "Nursing students receiving practical hospital training" },
+  { src: campusImage, alt: "Nursing students walking toward the college campus" },
+  { src: graduationImage, alt: "B.Sc. Nursing graduates celebrating their achievement" },
+];
 
 function Index() {
   return (
