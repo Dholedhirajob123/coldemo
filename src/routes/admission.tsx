@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Phone, MessageCircle, Download, ClipboardList } from "lucide-react";
 import { useState } from "react";
+import { PageBackButton } from "@/components/PageBackButton";
 
 export const Route = createFileRoute("/admission")({
   head: () => ({
@@ -47,6 +48,7 @@ function AdmissionPage() {
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-14">
+        <PageBackButton />
         {/* Process */}
         <h2 className="text-2xl font-bold text-navy">Admission Process</h2>
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

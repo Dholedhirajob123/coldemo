@@ -1,5 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { GraduationCap, Clock, BookOpen, BadgeCheck, FileText, Bell, ArrowRight } from "lucide-react";
+import { HomeDashboard } from "@/components/HomeDashboard";
+import { ImageSlider, type SliderImage } from "@/components/ImageSlider";
+import campusImage from "@/assets/nursing-campus.jpg";
+import labImage from "@/assets/nursing-lab.jpg";
+import classroomImage from "@/assets/nursing-classroom.jpg";
+import clinicalImage from "@/assets/nursing-clinical.jpg";
+import graduationImage from "@/assets/nursing-graduation.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -31,13 +38,28 @@ const NOTICES = [
   { title: "College Circular: Orientation Programme for First Year", date: "08 Sep 2026", category: "Circular", isNew: false },
 ];
 
+const SLIDES: SliderImage[] = [
+  { src: campusImage, alt: "Nursing students walking toward the college campus" },
+  { src: labImage, alt: "B.Sc. Nursing students practicing in the clinical skills laboratory" },
+  { src: classroomImage, alt: "Nursing students learning anatomy in a classroom" },
+  { src: clinicalImage, alt: "Nursing students receiving practical hospital training" },
+  { src: graduationImage, alt: "B.Sc. Nursing graduates celebrating their achievement" },
+];
+
+const COURSE_SLIDES: SliderImage[] = [
+  { src: labImage, alt: "B.Sc. Nursing students practicing in the clinical skills laboratory" },
+  { src: classroomImage, alt: "Nursing students learning anatomy in a classroom" },
+  { src: clinicalImage, alt: "Nursing students receiving practical hospital training" },
+  { src: campusImage, alt: "Nursing students walking toward the college campus" },
+  { src: graduationImage, alt: "B.Sc. Nursing graduates celebrating their achievement" },
+];
+
 function Index() {
   return (
     <div>
-      {/* Hero */}
-      <section className="relative bg-navy text-navy-foreground">
-        <div className="absolute inset-0 bg-gradient-to-br from-navy via-navy to-royal opacity-90" />
-        <div className="relative mx-auto max-w-7xl px-4 py-24 text-center md:py-32">
+      <ImageSlider images={SLIDES} label="College highlights" className="min-h-[520px] bg-navy text-navy-foreground md:min-h-[590px]">
+        <div className="absolute inset-0 z-10 bg-navy/70" />
+        <div className="relative z-10 mx-auto flex min-h-[520px] max-w-7xl flex-col items-center justify-center px-16 py-20 text-center md:min-h-[590px] md:px-24">
           <p className="text-sm font-semibold uppercase tracking-widest text-teal">
             Approved by Govt. of Maharashtra &amp; MUHS Nashik
           </p>
@@ -58,10 +80,43 @@ function Index() {
             </Link>
           </div>
         </div>
+      </ImageSlider>
+
+      <section className="mx-auto max-w-7xl px-4 py-14">
+        <div className="grid items-stretch gap-6 lg:grid-cols-[minmax(0,1fr)_340px]">
+          <div>
+            <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-widest text-teal">Our programme</p>
+                <h2 className="mt-1 text-3xl font-bold text-navy">B.Sc. Nursing</h2>
+                <p className="mt-1 text-muted-foreground">Learning, clinical practice and a rewarding healthcare career.</p>
+              </div>
+              <Link to="/courses" className="flex items-center gap-1 text-sm font-semibold text-royal hover:underline">
+                Course Details <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+            <ImageSlider
+              images={COURSE_SLIDES}
+              label="B.Sc. Nursing programme"
+              interval={4200}
+              className="min-h-[360px] rounded-lg bg-navy md:min-h-[430px]"
+            >
+              <div className="absolute inset-0 z-10 bg-navy/20" />
+              <div className="absolute bottom-10 left-16 right-16 z-10 text-navy-foreground md:left-20">
+                <p className="text-sm font-semibold uppercase tracking-widest text-teal">Four-year degree programme</p>
+                <p className="mt-1 text-2xl font-bold">Study. Practise. Care.</p>
+              </div>
+            </ImageSlider>
+          </div>
+          <div className="pt-0 lg:pt-[89px]">
+            <HomeDashboard />
+          </div>
+        </div>
       </section>
 
       {/* Quick facts */}
-      <section className="mx-auto max-w-7xl px-4 py-12">
+      <section className="border-t border-border bg-sky/50 py-12">
+        <div className="mx-auto max-w-7xl px-4">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {QUICK_FACTS.map((f) => (
             <div key={f.title} className="flex items-center gap-4 rounded-xl border border-border bg-card p-5 shadow-sm">
@@ -74,6 +129,7 @@ function Index() {
               </div>
             </div>
           ))}
+        </div>
         </div>
       </section>
 

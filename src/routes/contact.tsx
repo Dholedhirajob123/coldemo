@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
 import { useState } from "react";
+import { PageBackButton } from "@/components/PageBackButton";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -32,6 +33,7 @@ function ContactPage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-4 py-14">
+        <PageBackButton />
         <div className="grid gap-8 lg:grid-cols-2">
           {/* Info */}
           <div className="space-y-5">

@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Bell, Download } from "lucide-react";
 import { useState } from "react";
+import { PageBackButton } from "@/components/PageBackButton";
 
 export const Route = createFileRoute("/notices")({
   head: () => ({
@@ -39,6 +40,7 @@ function NoticesPage() {
       </section>
 
       <section className="mx-auto max-w-5xl px-4 py-14">
+        <PageBackButton />
         <div className="flex flex-wrap gap-2">
           {CATEGORIES.map((c) => (
             <button
