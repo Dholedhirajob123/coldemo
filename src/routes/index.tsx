@@ -116,6 +116,107 @@ function Index() {
         </div>
       </ImageSlider>
 
+      {/* About the college — overview, vibe, security, premises */}
+      <section className="border-b border-border bg-card py-12 sm:py-16">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="grid grid-cols-[minmax(0,1fr)_auto] items-end gap-3">
+            <div className="min-w-0">
+              <p className="text-sm font-semibold uppercase tracking-widest text-teal">Welcome to Rajashri</p>
+              <h2 className="mt-1 text-3xl font-bold text-navy">About Our College</h2>
+              <p className="mt-1 max-w-2xl text-muted-foreground">
+                Everything you should know about the college — the campus atmosphere, safety and the facilities on our premises.
+              </p>
+            </div>
+            <Link to="/about" className="flex items-center gap-1 whitespace-nowrap text-sm font-semibold text-royal hover:underline">
+              More About Us <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+
+          <div className="mt-8 grid gap-5 lg:grid-cols-3">
+            <article className="interactive-lift rounded-xl border border-border bg-card p-6 shadow-[var(--shadow-elevated)] lg:col-span-2">
+              <div className="flex items-center gap-4">
+                <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-navy text-navy-foreground">
+                  <Landmark className="h-8 w-8" />
+                </span>
+                <div className="min-w-0">
+                  <h3 className="text-2xl font-bold text-navy">Rajashri College of Nursing</h3>
+                  <p className="text-muted-foreground">Mehkar, Dist. Buldhana, Maharashtra – 443301</p>
+                </div>
+              </div>
+              <p className="mt-5 leading-relaxed text-muted-foreground">
+                Run by D.D.R. Shikshan Va Bahu-Uddeshiya Sanstha, Mehkar, Rajashri College of Nursing is
+                approved by the Government of Maharashtra and MUHS Nashik. The college offers the four-year
+                B.Sc. Nursing degree, combining strong classroom teaching, modern skill labs and hands-on
+                clinical training so every student graduates confident, skilled and ready to serve.
+              </p>
+              <div className="mt-5 grid gap-3 sm:grid-cols-3">
+                <div className="rounded-lg bg-sky p-4">
+                  <p className="flex items-center gap-2 font-semibold text-navy"><Users className="h-4 w-4 text-royal" /> Expert Faculty</p>
+                  <p className="mt-1 text-sm text-muted-foreground">Experienced nursing educators and clinicians.</p>
+                </div>
+                <div className="rounded-lg bg-sky p-4">
+                  <p className="flex items-center gap-2 font-semibold text-navy"><HeartPulse className="h-4 w-4 text-royal" /> Hospital Training</p>
+                  <p className="mt-1 text-sm text-muted-foreground">Real clinical practice in an attached hospital.</p>
+                </div>
+                <div className="rounded-lg bg-sky p-4">
+                  <p className="flex items-center gap-2 font-semibold text-navy"><BadgeCheck className="h-4 w-4 text-royal" /> Fully Approved</p>
+                  <p className="mt-1 text-sm text-muted-foreground">Govt. of Maharashtra & MUHS Nashik approved.</p>
+                </div>
+              </div>
+            </article>
+
+            <div className="grid gap-5">
+              <article className="interactive-lift rounded-xl border border-border bg-card p-6 shadow-[var(--shadow-card)]">
+                <div className="flex items-center gap-3">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-teal/15 text-teal">
+                    <Sparkles className="h-6 w-6" />
+                  </span>
+                  <h3 className="text-lg font-bold text-navy">Campus Vibe</h3>
+                </div>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  A positive, disciplined and friendly campus where students learn together, take part in
+                  cultural events, health camps and celebrations — feeling at home while building their careers.
+                </p>
+              </article>
+
+              <article className="interactive-lift rounded-xl border border-border bg-card p-6 shadow-[var(--shadow-card)]">
+                <div className="flex items-center gap-3">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-orange/15 text-orange">
+                    <ShieldCheck className="h-6 w-6" />
+                  </span>
+                  <h3 className="text-lg font-bold text-navy">Safety & Security</h3>
+                </div>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  24×7 campus security, CCTV monitoring, strict anti-ragging discipline and separate, secured
+                  hostel arrangements with wardens for a safe stay for girl and boy students.
+                </p>
+              </article>
+            </div>
+          </div>
+
+          <article className="interactive-lift mt-5 rounded-xl border border-border bg-navy p-6 text-navy-foreground shadow-[var(--shadow-elevated)] sm:p-8">
+            <div className="flex items-center gap-3">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-navy-foreground/15 text-teal">
+                <Building2 className="h-6 w-6" />
+              </span>
+              <h3 className="text-lg font-bold sm:text-xl">Our Premises</h3>
+            </div>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              {[
+                "Spacious academic building with well-ventilated classrooms",
+                "Modern nursing skill labs & science laboratories",
+                "Well-stocked library with reading hall",
+                "Hostel accommodation, playground & cafeteria",
+              ].map((item) => (
+                <div key={item} className="flex items-start gap-2 rounded-lg bg-navy-foreground/10 p-4 text-sm text-navy-foreground/90">
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-teal" /> {item}
+                </div>
+              ))}
+            </div>
+          </article>
+        </div>
+      </section>
+
       <section className="mx-auto max-w-7xl px-4 py-10 sm:py-16">
         <div className="grid items-stretch gap-6 lg:grid-cols-[minmax(0,1fr)_340px]">
           <div>
