@@ -9,3 +9,5 @@
 - [x] Add polished image, slider, logo, navigation, card, and dashboard motion
 - [x] Respect reduced-motion accessibility preferences
 - [x] Verify the animation update on desktop and mobile
+- [x] Add B.Sc. Nursing course information below the homepage sliders
+- [x] Make entrance effects hydration-safe and verify no console errors
