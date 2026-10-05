@@ -14,10 +14,12 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as AchievementsRouteImport } from './routes/achievements'
 import { Route as AdmissionRouteImport } from './routes/admission'
 import { Route as ClinicalTrainingRouteImport } from './routes/clinical-training'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CoursesRouteImport } from './routes/courses'
 import { Route as DownloadsRouteImport } from './routes/downloads'
 import { Route as FacilitiesRouteImport } from './routes/facilities'
 import { Route as FacultyRouteImport } from './routes/faculty'
+import { Route as FeeStructureRouteImport } from './routes/fee-structure'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as HospitalRouteImport } from './routes/hospital'
 import { Route as NoticesRouteImport } from './routes/notices'
@@ -47,6 +49,11 @@ const ClinicalTrainingRoute = ClinicalTrainingRouteImport.update({
   path: '/clinical-training',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CoursesRoute = CoursesRouteImport.update({
   id: '/courses',
   path: '/courses',
@@ -65,6 +72,11 @@ const FacilitiesRoute = FacilitiesRouteImport.update({
 const FacultyRoute = FacultyRouteImport.update({
   id: '/faculty',
   path: '/faculty',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeeStructureRoute = FeeStructureRouteImport.update({
+  id: '/fee-structure',
+  path: '/fee-structure',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GalleryRoute = GalleryRouteImport.update({
@@ -89,10 +101,12 @@ export interface FileRoutesByFullPath {
   '/achievements': typeof AchievementsRoute
   '/admission': typeof AdmissionRoute
   '/clinical-training': typeof ClinicalTrainingRoute
+  '/contact': typeof ContactRoute
   '/courses': typeof CoursesRoute
   '/downloads': typeof DownloadsRoute
   '/facilities': typeof FacilitiesRoute
   '/faculty': typeof FacultyRoute
+  '/fee-structure': typeof FeeStructureRoute
   '/gallery': typeof GalleryRoute
   '/hospital': typeof HospitalRoute
   '/notices': typeof NoticesRoute
@@ -103,10 +117,12 @@ export interface FileRoutesByTo {
   '/achievements': typeof AchievementsRoute
   '/admission': typeof AdmissionRoute
   '/clinical-training': typeof ClinicalTrainingRoute
+  '/contact': typeof ContactRoute
   '/courses': typeof CoursesRoute
   '/downloads': typeof DownloadsRoute
   '/facilities': typeof FacilitiesRoute
   '/faculty': typeof FacultyRoute
+  '/fee-structure': typeof FeeStructureRoute
   '/gallery': typeof GalleryRoute
   '/hospital': typeof HospitalRoute
   '/notices': typeof NoticesRoute
@@ -118,10 +134,12 @@ export interface FileRoutesById {
   '/achievements': typeof AchievementsRoute
   '/admission': typeof AdmissionRoute
   '/clinical-training': typeof ClinicalTrainingRoute
+  '/contact': typeof ContactRoute
   '/courses': typeof CoursesRoute
   '/downloads': typeof DownloadsRoute
   '/facilities': typeof FacilitiesRoute
   '/faculty': typeof FacultyRoute
+  '/fee-structure': typeof FeeStructureRoute
   '/gallery': typeof GalleryRoute
   '/hospital': typeof HospitalRoute
   '/notices': typeof NoticesRoute
@@ -134,10 +152,12 @@ export interface FileRouteTypes {
     | '/achievements'
     | '/admission'
     | '/clinical-training'
+    | '/contact'
     | '/courses'
     | '/downloads'
     | '/facilities'
     | '/faculty'
+    | '/fee-structure'
     | '/gallery'
     | '/hospital'
     | '/notices'
@@ -148,10 +168,12 @@ export interface FileRouteTypes {
     | '/achievements'
     | '/admission'
     | '/clinical-training'
+    | '/contact'
     | '/courses'
     | '/downloads'
     | '/facilities'
     | '/faculty'
+    | '/fee-structure'
     | '/gallery'
     | '/hospital'
     | '/notices'
@@ -162,10 +184,12 @@ export interface FileRouteTypes {
     | '/achievements'
     | '/admission'
     | '/clinical-training'
+    | '/contact'
     | '/courses'
     | '/downloads'
     | '/facilities'
     | '/faculty'
+    | '/fee-structure'
     | '/gallery'
     | '/hospital'
     | '/notices'
@@ -177,10 +201,12 @@ export interface RootRouteChildren {
   AchievementsRoute: typeof AchievementsRoute
   AdmissionRoute: typeof AdmissionRoute
   ClinicalTrainingRoute: typeof ClinicalTrainingRoute
+  ContactRoute: typeof ContactRoute
   CoursesRoute: typeof CoursesRoute
   DownloadsRoute: typeof DownloadsRoute
   FacilitiesRoute: typeof FacilitiesRoute
   FacultyRoute: typeof FacultyRoute
+  FeeStructureRoute: typeof FeeStructureRoute
   GalleryRoute: typeof GalleryRoute
   HospitalRoute: typeof HospitalRoute
   NoticesRoute: typeof NoticesRoute
@@ -223,6 +249,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ClinicalTrainingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/courses': {
       id: '/courses'
       path: '/courses'
@@ -249,6 +282,13 @@ declare module '@tanstack/react-router' {
       path: '/faculty'
       fullPath: '/faculty'
       preLoaderRoute: typeof FacultyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fee-structure': {
+      id: '/fee-structure'
+      path: '/fee-structure'
+      fullPath: '/fee-structure'
+      preLoaderRoute: typeof FeeStructureRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gallery': {
@@ -281,10 +321,12 @@ const rootRouteChildren: RootRouteChildren = {
   AchievementsRoute: AchievementsRoute,
   AdmissionRoute: AdmissionRoute,
   ClinicalTrainingRoute: ClinicalTrainingRoute,
+  ContactRoute: ContactRoute,
   CoursesRoute: CoursesRoute,
   DownloadsRoute: DownloadsRoute,
   FacilitiesRoute: FacilitiesRoute,
   FacultyRoute: FacultyRoute,
+  FeeStructureRoute: FeeStructureRoute,
   GalleryRoute: GalleryRoute,
   HospitalRoute: HospitalRoute,
   NoticesRoute: NoticesRoute,
