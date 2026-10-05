@@ -73,33 +73,33 @@
 
 :root {
   --radius: 0.625rem;
-  --navy: oklch(0.24 0.09 265);
-  --navy-foreground: oklch(0.98 0.005 250);
-  --royal: oklch(0.49 0.21 264);
-  --teal: oklch(0.62 0.11 185);
-  --teal-foreground: oklch(0.98 0.01 190);
-  --orange: oklch(0.68 0.15 72);
-  --orange-foreground: oklch(0.99 0.01 80);
-  --sky: oklch(0.96 0.02 240);
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
+  --navy: oklch(0.26 0.14 266);
+  --navy-foreground: oklch(0.99 0.004 250);
+  --royal: oklch(0.43 0.19 265);
+  --teal: oklch(0.57 0.11 190);
+  --teal-foreground: oklch(0.99 0.005 190);
+  --orange: oklch(0.59 0.23 27);
+  --orange-foreground: oklch(0.99 0.005 25);
+  --sky: oklch(0.97 0.025 95);
+  --background: oklch(0.995 0.006 95);
+  --foreground: oklch(0.22 0.06 265);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
+  --card-foreground: oklch(0.22 0.06 265);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
+  --popover-foreground: oklch(0.22 0.06 265);
+  --primary: var(--navy);
+  --primary-foreground: var(--navy-foreground);
+  --secondary: oklch(0.95 0.04 190);
+  --secondary-foreground: var(--navy);
+  --muted: oklch(0.96 0.016 250);
+  --muted-foreground: oklch(0.47 0.045 260);
+  --accent: oklch(0.94 0.045 190);
+  --accent-foreground: var(--navy);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --border: oklch(0.89 0.025 240);
+  --input: oklch(0.89 0.025 240);
+  --ring: var(--teal);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -163,6 +163,13 @@
     font-family: var(--font-sans);
     letter-spacing: 0;
     text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  img,
+  video,
+  iframe {
+    max-width: 100%;
   }
 
   h1,
