@@ -26,6 +26,14 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
+  --color-navy: var(--navy);
+  --color-navy-foreground: var(--navy-foreground);
+  --color-royal: var(--royal);
+  --color-teal: var(--teal);
+  --color-teal-foreground: var(--teal-foreground);
+  --color-orange: var(--orange);
+  --color-orange-foreground: var(--orange-foreground);
+  --color-sky: var(--sky);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -63,6 +71,14 @@
 
 :root {
   --radius: 0.625rem;
+  --navy: oklch(0.26 0.07 258);
+  --navy-foreground: oklch(0.98 0.005 250);
+  --royal: oklch(0.45 0.16 258);
+  --teal: oklch(0.62 0.11 185);
+  --teal-foreground: oklch(0.98 0.01 190);
+  --orange: oklch(0.7 0.17 55);
+  --orange-foreground: oklch(0.99 0.01 80);
+  --sky: oklch(0.96 0.02 240);
   --background: oklch(1 0 0);
   --foreground: oklch(0.129 0.042 264.695);
   --card: oklch(1 0 0);
