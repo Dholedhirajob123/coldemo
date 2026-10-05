@@ -80,11 +80,7 @@ export function SiteHeader() {
             </span>
           </Link>
 
-          <div className="hidden h-20 w-20 items-center justify-center rounded-md border border-border bg-sky sm:flex" aria-hidden="true">
-            <span className="text-center text-[9px] font-bold uppercase leading-tight text-navy">
-              Excellence<br />in Nursing<br />Education
-            </span>
-          </div>
+          <span className="hidden h-20 w-20 sm:block" aria-hidden="true" />
           <button
             className="justify-self-end rounded-md border border-border p-2 text-navy lg:hidden"
             onClick={() => setOpen(!open)}
