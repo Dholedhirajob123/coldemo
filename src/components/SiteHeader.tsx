@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { Menu, Phone, Mail, MapPin, GraduationCap, X } from "lucide-react";
+import { Menu, Phone, Mail, MapPin, X } from "lucide-react";
 import { useState } from "react";
+import collegeLogo from "@/assets/rajashri-college-logo.jpeg.asset.json";
 
 const NAV = [
   { to: "/", label: "Home" },
@@ -48,23 +49,40 @@ export function SiteHeader() {
       </div>
 
       {/* Main header */}
-      <div className="border-b border-border bg-background/95 backdrop-blur">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3">
-          <Link to="/" className="flex items-center gap-3">
-            <span className="flex h-12 w-12 items-center justify-center rounded-full bg-navy text-navy-foreground">
-              <GraduationCap className="h-7 w-7" />
+      <div className="border-b border-border bg-background/95 shadow-sm backdrop-blur">
+        <div className="relative mx-auto grid max-w-7xl grid-cols-[64px_minmax(0,1fr)_44px] items-center gap-2 px-3 py-2.5 sm:grid-cols-[86px_minmax(0,1fr)_86px] sm:gap-4 sm:px-4 sm:py-3">
+          <Link
+            to="/"
+            aria-label="Rajashri College of Nursing home"
+            className="group flex h-16 w-16 items-center justify-center sm:h-20 sm:w-20"
+          >
+            <img
+              src={collegeLogo.url}
+              alt="Rajashri College of Nursing logo"
+              width={800}
+              height={800}
+              className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
+            />
+          </Link>
+
+          <Link to="/" className="min-w-0 text-center">
+            <span className="hidden text-xs font-semibold uppercase text-teal sm:block">
+              D.D.R. Shikshan Va Bahu-Uddeshiya Sanstha, Mehkar's
             </span>
-            <span>
-              <span className="block text-base font-bold leading-tight text-navy md:text-lg">
-                RAJASHRI COLLEGE OF NURSING
-              </span>
-              <span className="block text-xs text-muted-foreground">
-                Mehkar, Dist. Buldhana, Maharashtra
-              </span>
+            <span className="mt-0.5 block font-display text-[clamp(1rem,2.4vw,2rem)] font-bold leading-tight text-navy">
+              RAJASHRI COLLEGE OF NURSING
+            </span>
+            <span className="mt-0.5 block text-[10px] font-semibold uppercase text-muted-foreground sm:text-sm">
+              Mehkar, Dist. Buldhana 443301
+            </span>
+            <span className="mt-1 hidden text-xs font-bold text-royal md:block">
+              Approved by Govt. of Maharashtra &amp; MUHS Nashik
             </span>
           </Link>
+
+          <span className="hidden h-20 w-20 sm:block" aria-hidden="true" />
           <button
-            className="rounded-md border border-border p-2 lg:hidden"
+            className="justify-self-end rounded-md border border-border p-2 text-navy lg:hidden"
             onClick={() => setOpen(!open)}
             aria-label="Toggle menu"
           >
