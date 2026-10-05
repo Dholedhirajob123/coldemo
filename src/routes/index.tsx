@@ -58,12 +58,12 @@ function Index() {
   return (
     <div>
       <ImageSlider images={SLIDES} label="College highlights" className="min-h-[520px] bg-navy text-navy-foreground md:min-h-[590px]">
-        <div className="absolute inset-0 z-10 bg-navy/70" />
+        <div className="absolute inset-0 z-10 bg-navy/65" />
         <div className="relative z-10 mx-auto flex min-h-[520px] max-w-7xl flex-col items-center justify-center px-16 py-20 text-center md:min-h-[590px] md:px-24">
           <p className="text-sm font-semibold uppercase tracking-widest text-teal">
             Approved by Govt. of Maharashtra &amp; MUHS Nashik
           </p>
-          <h1 className="mt-4 text-4xl font-bold md:text-6xl">Rajashri College of Nursing, Mehkar</h1>
+          <h1 className="mt-4 max-w-5xl text-4xl font-bold leading-tight md:text-6xl">Rajashri College of Nursing, Mehkar</h1>
           <p className="mt-4 text-xl font-medium text-navy-foreground/90">Excellence in Nursing Education</p>
           <p className="mx-auto mt-3 max-w-2xl text-navy-foreground/70">
             Building skilled, compassionate and confident healthcare professionals for tomorrow.
@@ -82,7 +82,7 @@ function Index() {
         </div>
       </ImageSlider>
 
-      <section className="mx-auto max-w-7xl px-4 py-14">
+      <section className="mx-auto max-w-7xl px-4 py-16">
         <div className="grid items-stretch gap-6 lg:grid-cols-[minmax(0,1fr)_340px]">
           <div>
             <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
@@ -99,7 +99,7 @@ function Index() {
               images={COURSE_SLIDES}
               label="B.Sc. Nursing programme"
               interval={4200}
-              className="min-h-[360px] rounded-lg bg-navy md:min-h-[430px]"
+              className="min-h-[360px] rounded-lg border border-border bg-navy md:min-h-[430px]"
             >
               <div className="absolute inset-0 z-10 bg-navy/20" />
               <div className="absolute bottom-10 left-16 right-16 z-10 text-navy-foreground md:left-20">
@@ -119,7 +119,7 @@ function Index() {
         <div className="mx-auto max-w-7xl px-4">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {QUICK_FACTS.map((f) => (
-            <div key={f.title} className="flex items-center gap-4 rounded-xl border border-border bg-card p-5 shadow-sm">
+            <div key={f.title} className="flex items-center gap-4 rounded-lg border border-border bg-card p-5 shadow-[var(--shadow-card)] transition-transform duration-300 hover:-translate-y-1">
               <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-sky text-royal">
                 <f.icon className="h-6 w-6" />
               </span>
@@ -146,7 +146,7 @@ function Index() {
           </div>
           <div className="mt-6 grid gap-4 md:grid-cols-2">
             {NOTICES.map((n) => (
-              <div key={n.title} className="rounded-xl border border-border bg-card p-5 shadow-sm">
+              <div key={n.title} className="rounded-lg border border-border bg-card p-5 shadow-[var(--shadow-card)] transition-transform duration-300 hover:-translate-y-1">
                 <div className="flex items-center gap-2 text-xs">
                   <span className="rounded-full bg-teal/15 px-2 py-0.5 font-medium text-teal">{n.category}</span>
                   {n.isNew && <span className="rounded-full bg-orange px-2 py-0.5 font-semibold text-orange-foreground">NEW</span>}

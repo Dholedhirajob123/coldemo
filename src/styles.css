@@ -67,16 +67,18 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --font-display: "Libre Baskerville", Georgia, serif;
+  --font-sans: "IBM Plex Sans", Arial, sans-serif;
 }
 
 :root {
   --radius: 0.625rem;
-  --navy: oklch(0.26 0.07 258);
+  --navy: oklch(0.24 0.09 265);
   --navy-foreground: oklch(0.98 0.005 250);
-  --royal: oklch(0.45 0.16 258);
+  --royal: oklch(0.49 0.21 264);
   --teal: oklch(0.62 0.11 185);
   --teal-foreground: oklch(0.98 0.01 190);
-  --orange: oklch(0.7 0.17 55);
+  --orange: oklch(0.68 0.15 72);
   --orange-foreground: oklch(0.99 0.01 80);
   --sky: oklch(0.96 0.02 240);
   --background: oklch(1 0 0);
@@ -111,6 +113,8 @@
   --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
   --sidebar-border: oklch(0.929 0.013 255.508);
   --sidebar-ring: oklch(0.704 0.04 256.788);
+  --shadow-elevated: 0 24px 60px -28px color-mix(in oklab, var(--navy) 45%, transparent);
+  --shadow-card: 0 12px 32px -22px color-mix(in oklab, var(--navy) 35%, transparent);
 }
 
 .dark {
@@ -156,5 +160,56 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+    letter-spacing: 0;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: 0;
+  }
+}
+
+@utility slider-3d-frame {
+  box-shadow: var(--shadow-elevated);
+}
+
+@utility slider-3d-stage {
+  perspective: 1400px;
+  transform-style: preserve-3d;
+}
+
+@utility slider-3d-slide {
+  backface-visibility: hidden;
+  transition: opacity 850ms cubic-bezier(0.22, 1, 0.36, 1), transform 850ms cubic-bezier(0.22, 1, 0.36, 1), filter 850ms ease;
+  will-change: transform, opacity;
+}
+
+@utility slider-3d-active {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) rotateY(0deg) scale(1.01);
+  filter: saturate(1.05) contrast(1.02);
+}
+
+@utility slider-3d-exit-left {
+  pointer-events: none;
+  opacity: 0;
+  transform: translate3d(-9%, 0, -120px) rotateY(8deg) scale(0.94);
+  filter: saturate(0.8);
+}
+
+@utility slider-3d-exit-right {
+  pointer-events: none;
+  opacity: 0;
+  transform: translate3d(9%, 0, -120px) rotateY(-8deg) scale(0.94);
+  filter: saturate(0.8);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slider-3d-slide {
+    transition-duration: 1ms;
   }
 }

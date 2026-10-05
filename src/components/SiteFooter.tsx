@@ -48,7 +48,11 @@ export function SiteFooter() {
               <MapPin className="mt-0.5 h-4 w-4 shrink-0" />
               Mehkar, Dist. Buldhana, Maharashtra – 443301
             </li>
-            <li className="flex items-center gap-2"><Phone className="h-4 w-4" /> 9881851514</li>
+            <li>
+              <a href="tel:7218298534" className="flex items-center gap-2 hover:text-orange">
+                <Phone className="h-4 w-4" /> 7218298534
+              </a>
+            </li>
             <li className="flex items-center gap-2"><Mail className="h-4 w-4" /> rajshreensgmehkar@gmail.com</li>
           </ul>
           <div className="mt-4 flex gap-4 text-sm">
@@ -58,8 +62,13 @@ export function SiteFooter() {
           </div>
         </div>
       </div>
-      <div className="border-t border-navy-foreground/15 py-4 text-center text-xs text-navy-foreground/60">
-        © Rajashri College of Nursing, Mehkar. All Rights Reserved.
+      <div className="border-t border-navy-foreground/15 px-4 py-5 text-center text-xs text-navy-foreground/65">
+        <p>© Rajashri College of Nursing, Mehkar. All Rights Reserved.</p>
+        <p className="mt-1 text-navy-foreground/90">
+          Created by <span className="font-semibold text-orange">Dhiraj Dhole</span>
+          <span className="mx-2 text-navy-foreground/30">•</span>
+          <a href="tel:7218298534" className="font-semibold hover:text-orange">7218298534</a>
+        </p>
       </div>
     </footer>
   );
