@@ -59,7 +59,7 @@ function Index() {
     <div>
       <ImageSlider images={SLIDES} label="College highlights" className="min-h-[480px] bg-navy text-navy-foreground sm:min-h-[520px] md:min-h-[590px]">
         <div className="absolute inset-0 z-10 bg-navy/65" />
-        <div className="relative z-10 mx-auto flex min-h-[480px] max-w-7xl flex-col items-center justify-center px-14 py-16 text-center sm:min-h-[520px] sm:px-16 md:min-h-[590px] md:px-24 md:py-20">
+        <div className="relative z-10 mx-auto flex min-h-[480px] max-w-7xl flex-col items-center justify-center px-12 py-16 text-center sm:min-h-[520px] sm:px-16 md:min-h-[590px] md:px-24 md:py-20">
           <p className="text-xs font-semibold uppercase text-teal sm:text-sm">
             Approved by Govt. of Maharashtra &amp; MUHS Nashik
           </p>

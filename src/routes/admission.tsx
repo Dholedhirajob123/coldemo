@@ -92,7 +92,7 @@ function AdmissionPage() {
         </div>
 
         {/* Enquiry form */}
-        <div id="enquiry" className="mx-auto mt-14 max-w-2xl rounded-2xl border border-border bg-card p-8 shadow-sm">
+        <div id="enquiry" className="mx-auto mt-14 max-w-2xl rounded-2xl border border-border bg-card p-5 shadow-sm sm:p-8">
           <h2 className="text-2xl font-bold text-navy">Admission Enquiry</h2>
           <p className="mt-1 text-sm text-muted-foreground">Fill in your details and our admission team will contact you.</p>
           {submitted ? (

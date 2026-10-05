@@ -76,7 +76,7 @@ function GalleryPage() {
           className="fixed inset-0 z-50 flex items-center justify-center bg-navy/80 p-4"
           onClick={() => setLightbox(null)}
         >
-          <div className="w-full max-w-lg rounded-2xl bg-card p-10 text-center" onClick={(e) => e.stopPropagation()}>
+          <div className="w-full max-w-lg rounded-2xl bg-card p-6 text-center sm:p-10" onClick={(e) => e.stopPropagation()}>
             <button className="ml-auto block text-muted-foreground hover:text-foreground" onClick={() => setLightbox(null)} aria-label="Close">
               <X className="h-5 w-5" />
             </button>
