@@ -46,9 +46,15 @@ export function ImageSlider({
     setActive((index + images.length) % images.length);
   };
 
+  const getSlidePosition = (index: number) => {
+    if (index === active) return "slider-3d-active";
+    const previous = (active - 1 + images.length) % images.length;
+    return index === previous ? "slider-3d-exit-left" : "slider-3d-exit-right";
+  };
+
   return (
     <section
-      className={cn("group relative overflow-hidden", className)}
+      className={cn("group relative isolate overflow-hidden slider-3d-frame", className)}
       aria-roledescription="carousel"
       aria-label={label}
       onMouseEnter={() => setPaused(true)}
@@ -58,7 +64,7 @@ export function ImageSlider({
         if (!event.currentTarget.contains(event.relatedTarget)) setPaused(false);
       }}
     >
-      <div className="absolute inset-0">
+      <div className="slider-3d-stage absolute inset-0">
         {images.map((image, index) => (
           <img
             key={image.src}
@@ -68,8 +74,8 @@ export function ImageSlider({
             height={900}
             loading={index === 0 ? "eager" : "lazy"}
             className={cn(
-              "absolute inset-0 h-full w-full object-cover transition-opacity duration-700 motion-reduce:transition-none",
-              index === active ? "opacity-100" : "pointer-events-none opacity-0",
+              "absolute inset-0 h-full w-full object-cover slider-3d-slide motion-reduce:transform-none motion-reduce:transition-none",
+              getSlidePosition(index),
               imageClassName,
             )}
             aria-hidden={index !== active}
@@ -85,7 +91,7 @@ export function ImageSlider({
         size="icon"
         onClick={() => goTo(active - 1)}
         aria-label="Previous image"
-        className="absolute left-3 top-1/2 z-20 -translate-y-1/2 border-navy-foreground/40 bg-navy/60 text-navy-foreground shadow-none hover:bg-navy hover:text-navy-foreground md:left-6"
+        className="absolute left-3 top-1/2 z-20 -translate-y-1/2 border-navy-foreground/35 bg-navy/70 text-navy-foreground shadow-lg backdrop-blur-sm transition-transform hover:scale-110 hover:bg-navy hover:text-navy-foreground md:left-6"
       >
         <ChevronLeft />
       </Button>
@@ -95,7 +101,7 @@ export function ImageSlider({
         size="icon"
         onClick={() => goTo(active + 1)}
         aria-label="Next image"
-        className="absolute right-3 top-1/2 z-20 -translate-y-1/2 border-navy-foreground/40 bg-navy/60 text-navy-foreground shadow-none hover:bg-navy hover:text-navy-foreground md:right-6"
+        className="absolute right-3 top-1/2 z-20 -translate-y-1/2 border-navy-foreground/35 bg-navy/70 text-navy-foreground shadow-lg backdrop-blur-sm transition-transform hover:scale-110 hover:bg-navy hover:text-navy-foreground md:right-6"
       >
         <ChevronRight />
       </Button>

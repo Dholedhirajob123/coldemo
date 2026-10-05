@@ -63,20 +63,6 @@ export function SiteHeader() {
               </span>
             </span>
           </Link>
-          <div className="hidden items-center gap-2 lg:flex">
-            <Link
-              to="/admission"
-              className="rounded-md bg-orange px-4 py-2 text-sm font-semibold text-orange-foreground hover:opacity-90"
-            >
-              Apply Now
-            </Link>
-            <button className="rounded-md border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-accent">
-              Student Login
-            </button>
-            <button className="rounded-md bg-navy px-4 py-2 text-sm font-medium text-navy-foreground hover:opacity-90">
-              Admin Login
-            </button>
-          </div>
           <button
             className="rounded-md border border-border p-2 lg:hidden"
             onClick={() => setOpen(!open)}
@@ -119,18 +105,6 @@ export function SiteHeader() {
                   {item.label}
                 </Link>
               ))}
-              <div className="flex gap-2 py-3">
-                <Link
-                  to="/admission"
-                  onClick={() => setOpen(false)}
-                  className="rounded-md bg-orange px-4 py-2 text-sm font-semibold text-orange-foreground"
-                >
-                  Apply Now
-                </Link>
-                <button className="rounded-md border border-navy-foreground/30 px-4 py-2 text-sm text-navy-foreground">
-                  Student Login
-                </button>
-              </div>
             </div>
           </nav>
         )}

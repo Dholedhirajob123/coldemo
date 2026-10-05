@@ -9,4 +9,6 @@
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
 
-- Reuse `ImageSlider` for timed image carousels so controls, pausing, and accessibility remain consistent.
+# Project architecture
+
+- Reuse `ImageSlider` for all timed carousels so controls, pause behavior, accessibility, and 3D transitions remain consistent.
