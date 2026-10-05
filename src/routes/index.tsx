@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { GraduationCap, Clock, BookOpen, BadgeCheck, FileText, Bell, ArrowRight } from "lucide-react";
+import { GraduationCap, Clock, BookOpen, BadgeCheck, FileText, Bell, ArrowRight, FileCheck, Star, Briefcase, CheckCircle2 } from "lucide-react";
 import { HomeDashboard } from "@/components/HomeDashboard";
 import { ImageSlider, type SliderImage } from "@/components/ImageSlider";
 import campusImage from "@/assets/nursing-campus.jpg";
@@ -36,6 +36,40 @@ const NOTICES = [
   { title: "CET Document Verification Notice for Admitted Students", date: "22 Sep 2026", category: "CET", isNew: true },
   { title: "MUHS Winter Examination Time Table Released", date: "15 Sep 2026", category: "Examination", isNew: false },
   { title: "College Circular: Orientation Programme for First Year", date: "08 Sep 2026", category: "Circular", isNew: false },
+];
+
+const COURSE_FACTS = [
+  { icon: Clock, value: "4 Years", label: "Duration" },
+  { icon: BookOpen, value: "12th Science (PCB)", label: "Eligibility" },
+  { icon: FileCheck, value: "CET / CAP Process", label: "Admission" },
+  { icon: BadgeCheck, value: "MUHS Nashik", label: "Affiliation" },
+];
+
+const HIGHLIGHTS = [
+  "MUHS Nashik affiliated curriculum",
+  "Extensive clinical training in attached hospital",
+  "Rural & urban community health postings",
+  "Modern skill labs and simulation practice",
+  "Experienced nursing faculty",
+  "Internship & placement guidance",
+];
+
+const CAREERS = [
+  "Staff Nurse (Government & Private Hospitals)",
+  "Community Health Nurse",
+  "Nursing Officer / Nursing Supervisor",
+  "ICU, OT & Emergency Care Nurse",
+  "Nursing Tutor / Educator",
+  "Higher studies: M.Sc. Nursing, Post-Basic specialties",
+];
+
+const DOCUMENTS = [
+  "CET Admit Card & Result",
+  "CAP Allotment Letter",
+  "HSC / SSC Marksheet",
+  "Caste Certificate (where applicable)",
+  "Passport Size Photos",
+  "Identity Proof",
 ];
 
 const SLIDES: SliderImage[] = [
@@ -110,6 +144,110 @@ function Index() {
           </div>
           <div className="pt-0 lg:pt-[89px]">
             <HomeDashboard />
+          </div>
+        </div>
+      </section>
+
+      {/* Course information */}
+      <section className="border-t border-border bg-card py-14 sm:py-16">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="grid grid-cols-[minmax(0,1fr)_auto] items-end gap-3">
+            <div className="min-w-0">
+              <p className="text-sm font-semibold uppercase tracking-widest text-teal">Courses offered</p>
+              <h2 className="mt-1 text-3xl font-bold text-navy">Our Courses</h2>
+              <p className="mt-1 max-w-2xl text-muted-foreground">
+                A four-year undergraduate nursing degree built around classroom learning, skill-lab practice
+                and hospital &amp; community clinical postings.
+              </p>
+            </div>
+            <Link to="/courses" className="flex items-center gap-1 whitespace-nowrap text-sm font-semibold text-royal hover:underline">
+              Course Details <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+
+          <article className="mt-8 overflow-hidden rounded-xl border border-border bg-card shadow-[var(--shadow-elevated)]">
+            <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,340px)]">
+              <div className="p-6 sm:p-8">
+                <div className="flex items-center gap-4">
+                  <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-navy text-navy-foreground">
+                    <GraduationCap className="h-8 w-8" />
+                  </span>
+                  <div className="min-w-0">
+                    <h3 className="text-2xl font-bold text-navy">B.Sc. Nursing</h3>
+                    <p className="text-muted-foreground">Bachelor of Science in Nursing</p>
+                  </div>
+                </div>
+
+                <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                  {COURSE_FACTS.map((f) => (
+                    <div key={f.label} className="flex items-start gap-3 rounded-lg bg-sky p-4">
+                      <f.icon className="mt-0.5 h-5 w-5 shrink-0 text-royal" />
+                      <div className="min-w-0">
+                        <p className="font-semibold text-foreground">{f.value}</p>
+                        <p className="text-xs uppercase tracking-wide text-muted-foreground">{f.label}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <h4 className="mt-7 text-lg font-semibold text-navy">Course Overview</h4>
+                <p className="mt-2 leading-relaxed text-muted-foreground">
+                  The B.Sc. Nursing programme is a 4-year undergraduate degree affiliated to MUHS Nashik. It
+                  combines classroom learning, laboratory practice and extensive clinical training to prepare
+                  students for professional nursing practice across hospitals, community health and education.
+                  Admission is as per the applicable Maharashtra / MUHS admission process.
+                </p>
+
+                <h4 className="mt-6 flex items-center gap-2 text-lg font-semibold text-navy">
+                  <Star className="h-5 w-5 text-orange" /> Course Highlights
+                </h4>
+                <ul className="mt-3 grid gap-2 sm:grid-cols-2">
+                  {HIGHLIGHTS.map((h) => (
+                    <li key={h} className="flex items-start gap-2 text-sm text-foreground">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-teal" /> {h}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <aside className="border-t border-border bg-navy p-6 text-navy-foreground sm:p-8 lg:border-l lg:border-t-0">
+                <h4 className="flex items-center gap-2 text-lg font-semibold">
+                  <Briefcase className="h-5 w-5 text-teal" /> Career Opportunities
+                </h4>
+                <ul className="mt-3 space-y-2 text-sm text-navy-foreground/85">
+                  {CAREERS.map((c) => (
+                    <li key={c} className="flex items-start gap-2">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-teal" /> {c}
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-6 rounded-lg bg-navy-foreground/10 p-4 text-sm">
+                  <p className="font-semibold text-teal">Approvals &amp; Codes</p>
+                  <p className="mt-1 text-navy-foreground/85">Approved by Govt. of Maharashtra &amp; MUHS Nashik</p>
+                  <p className="mt-1 text-navy-foreground/85">CET Code: 9501</p>
+                  <p className="mt-1 text-navy-foreground/85">MUHS Code: 155193</p>
+                </div>
+
+                <div className="mt-6 grid gap-2">
+                  <Link to="/admission" className="rounded-md bg-orange px-5 py-2.5 text-center font-semibold text-orange-foreground hover:opacity-90">
+                    Apply Now
+                  </Link>
+                  <Link to="/fee-structure" className="rounded-md border border-navy-foreground/40 px-5 py-2.5 text-center font-semibold hover:bg-navy-foreground/10">
+                    View Fee Structure
+                  </Link>
+                </div>
+              </aside>
+            </div>
+          </article>
+
+          <div className="mt-6 rounded-lg border border-border bg-sky/60 p-5">
+            <h4 className="text-base font-semibold text-navy">Documents required at admission</h4>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {DOCUMENTS.map((d) => (
+                <span key={d} className="rounded-full bg-card px-3 py-1.5 text-sm text-foreground shadow-[var(--shadow-card)]">{d}</span>
+              ))}
+            </div>
           </div>
         </div>
       </section>
