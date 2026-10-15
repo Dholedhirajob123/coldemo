@@ -11,3 +11,7 @@
 - [x] Verify the animation update on desktop and mobile
 - [x] Add B.Sc. Nursing course information below the homepage sliders
 - [x] Make entrance effects hydration-safe and verify no console errors
+- [ ] Separate expanded college information from the homepage
+- [ ] Remove Hospital and Clinical Training pages and navigation
+- [ ] Replace Fee Structure with a separate FRA Fee Structure page and component
+- [ ] Verify page navigation and layouts
