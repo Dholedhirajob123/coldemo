@@ -9,14 +9,12 @@ const NAV = [
   { to: "/courses", label: "Courses" },
   { to: "/admission", label: "Admission" },
   { to: "/faculty", label: "Faculty" },
-  { to: "/hospital", label: "Hospital" },
   { to: "/facilities", label: "Facilities" },
-  { to: "/clinical-training", label: "Clinical Training" },
   { to: "/gallery", label: "Gallery" },
   { to: "/achievements", label: "Achievements" },
   { to: "/downloads", label: "Downloads" },
   { to: "/notices", label: "Notices" },
-  { to: "/fee-structure", label: "Fee Structure" },
+  { to: "/fra-fee-structure", label: "FRA Fee Structure" },
   { to: "/contact", label: "Contact Us" },
 ] as const;
 

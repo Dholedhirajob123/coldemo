@@ -36,7 +36,7 @@ export function SiteFooter() {
             <li><Link to="/courses" className="hover:text-orange">Courses</Link></li>
             <li><Link to="/faculty" className="hover:text-orange">Faculty</Link></li>
             <li><Link to="/admission" className="hover:text-orange">Admission</Link></li>
-            <li><Link to="/clinical-training" className="hover:text-orange">Clinical Training</Link></li>
+            <li><Link to="/fra-fee-structure" className="hover:text-orange">FRA Fee Structure</Link></li>
           </ul>
         </div>
 
