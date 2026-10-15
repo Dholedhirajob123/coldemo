@@ -20,6 +20,7 @@ import { Route as FacilitiesRouteImport } from './routes/facilities'
 import { Route as FacultyRouteImport } from './routes/faculty'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as NoticesRouteImport } from './routes/notices'
+import { Route as FraFeeStructureIndexRouteImport } from './routes/fra-fee-structure/index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -76,6 +77,11 @@ const NoticesRoute = NoticesRouteImport.update({
   path: '/notices',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FraFeeStructureIndexRoute = FraFeeStructureIndexRouteImport.update({
+  id: '/fra-fee-structure/',
+  path: '/fra-fee-structure/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -89,6 +95,7 @@ export interface FileRoutesByFullPath {
   '/faculty': typeof FacultyRoute
   '/gallery': typeof GalleryRoute
   '/notices': typeof NoticesRoute
+  '/fra-fee-structure/': typeof FraFeeStructureIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -102,6 +109,7 @@ export interface FileRoutesByTo {
   '/faculty': typeof FacultyRoute
   '/gallery': typeof GalleryRoute
   '/notices': typeof NoticesRoute
+  '/fra-fee-structure': typeof FraFeeStructureIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -116,6 +124,7 @@ export interface FileRoutesById {
   '/faculty': typeof FacultyRoute
   '/gallery': typeof GalleryRoute
   '/notices': typeof NoticesRoute
+  '/fra-fee-structure/': typeof FraFeeStructureIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -131,6 +140,7 @@ export interface FileRouteTypes {
     | '/faculty'
     | '/gallery'
     | '/notices'
+    | '/fra-fee-structure/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -144,6 +154,7 @@ export interface FileRouteTypes {
     | '/faculty'
     | '/gallery'
     | '/notices'
+    | '/fra-fee-structure'
   id:
     | '__root__'
     | '/'
@@ -157,6 +168,7 @@ export interface FileRouteTypes {
     | '/faculty'
     | '/gallery'
     | '/notices'
+    | '/fra-fee-structure/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -171,6 +183,7 @@ export interface RootRouteChildren {
   FacultyRoute: typeof FacultyRoute
   GalleryRoute: typeof GalleryRoute
   NoticesRoute: typeof NoticesRoute
+  FraFeeStructureIndexRoute: typeof FraFeeStructureIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -252,6 +265,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NoticesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/fra-fee-structure/': {
+      id: '/fra-fee-structure/'
+      path: '/fra-fee-structure'
+      fullPath: '/fra-fee-structure/'
+      preLoaderRoute: typeof FraFeeStructureIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -267,6 +287,7 @@ const rootRouteChildren: RootRouteChildren = {
   FacultyRoute: FacultyRoute,
   GalleryRoute: GalleryRoute,
   NoticesRoute: NoticesRoute,
+  FraFeeStructureIndexRoute: FraFeeStructureIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
