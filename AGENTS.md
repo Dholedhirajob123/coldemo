@@ -13,3 +13,4 @@
 
 - Reuse `ImageSlider` for all timed carousels so controls, pause behavior, accessibility, and 3D transitions remain consistent.
 - Mount shared viewport entrance effects through `ScrollMotion` so page motion stays consistent and respects reduced-motion preferences.
+- Keep detailed college information and FRA fees in their own feature component folders and leaf routes; the homepage uses summaries to avoid mixing unrelated content.

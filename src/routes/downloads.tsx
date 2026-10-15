@@ -17,7 +17,7 @@ export const Route = createFileRoute("/downloads")({
   component: DownloadsPage,
 });
 
-const CATEGORIES = ["All", "Admission Forms", "Prospectus", "Notices", "Circulars", "Academic Documents", "Fee Structure", "Important Forms"];
+const CATEGORIES = ["All", "Admission Forms", "Prospectus", "Notices", "Circulars", "Academic Documents", "Important Forms"];
 
 const DOCS = [
   { title: "B.Sc. Nursing Admission Form 2026–27", date: "01 Oct 2026", category: "Admission Forms" },
@@ -25,7 +25,6 @@ const DOCS = [
   { title: "CAP Round Admission Notice", date: "28 Sep 2026", category: "Notices" },
   { title: "Anti-Ragging Circular", date: "05 Aug 2026", category: "Circulars" },
   { title: "Academic Calendar 2026–27", date: "01 Jul 2026", category: "Academic Documents" },
-  { title: "Fee Structure 2026–27", date: "01 Jul 2026", category: "Fee Structure" },
   { title: "Hostel Application Form", date: "10 Jun 2026", category: "Important Forms" },
   { title: "Bonafide Certificate Request Form", date: "10 Jun 2026", category: "Important Forms" },
 ];

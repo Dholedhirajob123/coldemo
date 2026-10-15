@@ -5,7 +5,7 @@ const DASHBOARD_LINKS = [
   { to: "/admission", label: "Admission", detail: "Apply for B.Sc. Nursing", icon: ClipboardList },
   { to: "/notices", label: "Latest Notices", detail: "College announcements", icon: Bell },
   { to: "/downloads", label: "Downloads", detail: "Forms and prospectus", icon: Download },
-  { to: "/fee-structure", label: "Fee Structure", detail: "Course fee details", icon: IndianRupee },
+  { to: "/fra-fee-structure", label: "FRA Fee Structure", detail: "FRA-approved course fees", icon: IndianRupee },
   { to: "/contact", label: "Contact Us", detail: "Call or send an enquiry", icon: Phone },
 ] as const;
 
