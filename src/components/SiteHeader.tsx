@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Menu, Phone, Mail, MapPin, X, ChevronDown } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const NAV = [
   { to: "/", label: "Home" },
@@ -22,8 +23,6 @@ const NAV = [
       { to: "/faculty/non-teaching", label: "Non-Teaching Staff" },
     ],
   },
-  
-  // Removed Campus & Infrastructure from here
   { to: "/gallery", label: "Gallery" },
   { to: "/achievements", label: "Achievements" },
   { to: "/downloads", label: "Downloads" },
@@ -43,10 +42,10 @@ export function SiteHeader({
   onNavigate: (p: string) => void;
 }) {
   const [open, setOpen] = useState(false);
-  
+
   const [aboutOpen, setAboutOpen] = useState(false);
   const [facultyOpen, setFacultyOpen] = useState(false);
-  
+
   const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
   const [mobileFacultyOpen, setMobileFacultyOpen] = useState(false);
 
@@ -79,18 +78,18 @@ export function SiteHeader({
       {/* Brand row */}
       <div className="border-b border-border bg-background/95 shadow-sm backdrop-blur">
         <div className="mx-auto grid max-w-7xl grid-cols-[64px_1fr_44px] items-center gap-2 px-3 py-2.5 sm:grid-cols-[86px_1fr_86px] sm:gap-4 sm:px-4 sm:py-3">
-      <button
-  onClick={() => onNavigate("/")}
-  className="flex h-24 w-24 items-center justify-center sm:h-28 sm:w-28"
->
-  <div className="h-full w-full overflow-hidden rounded-lg">
-    <img
-      src="src/assets/logo.png"
-      alt="Rajashri College of Nursing Logo"
-      className="h-full w-full object-cover"
-    />
-  </div>
-</button>
+          <button
+            onClick={() => onNavigate("/")}
+            className="flex h-16 w-16 items-center justify-center sm:h-20 sm:w-20"
+          >
+            <div className="h-full w-full overflow-hidden rounded-lg">
+              <img
+                src={logo}
+                alt="Rajashri College of Nursing Logo"
+                className="h-full w-full object-cover"
+              />
+            </div>
+          </button>
 
           <button onClick={() => onNavigate("/")} className="min-w-0 text-center">
             <span className="hidden text-xs font-semibold uppercase text-teal sm:block">
@@ -125,10 +124,10 @@ export function SiteHeader({
               if (item.children) {
                 const isAbout = item.label === "About Us";
                 const isFaculty = item.label === "Faculty";
-                
+
                 const isOpen = isAbout ? aboutOpen : facultyOpen;
                 const setOpenState = isAbout ? setAboutOpen : setFacultyOpen;
-                
+
                 let isActive = false;
                 if (isAbout) isActive = ABOUT_PATHS.includes(current);
                 if (isFaculty) isActive = FACULTY_PATHS.includes(current);
@@ -204,10 +203,10 @@ export function SiteHeader({
                 if (item.children) {
                   const isAbout = item.label === "About Us";
                   const isFaculty = item.label === "Faculty";
-                  
+
                   const isMobileOpen = isAbout ? mobileAboutOpen : mobileFacultyOpen;
                   const setMobileOpenState = isAbout ? setMobileAboutOpen : setMobileFacultyOpen;
-                  
+
                   let isActive = false;
                   if (isAbout) isActive = ABOUT_PATHS.includes(current);
                   if (isFaculty) isActive = FACULTY_PATHS.includes(current);
