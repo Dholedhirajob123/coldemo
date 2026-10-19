@@ -1,14 +1,14 @@
-import { ArrowLeft } from "lucide-react";
-import { Link } from "@tanstack/react-router";
+import { ChevronLeft } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
-
-export function PageBackButton() {
+export function PageBackButton({ onNavigate }: { onNavigate: (p: string) => void }) {
   return (
-    <Button asChild variant="outline" className="mb-6">
-      <Link to="/">
-        <ArrowLeft /> Back
-      </Link>
-    </Button>
+    <button
+      type="button"
+      onClick={() => onNavigate("/")}
+      className="inline-flex items-center gap-1 text-sm font-semibold text-royal hover:underline"
+      aria-label="Back to home"
+    >
+      <ChevronLeft className="h-4 w-4" /> Back to Home
+    </button>
   );
 }
