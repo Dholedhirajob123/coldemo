@@ -1,63 +1,109 @@
-import { Bell, Download } from "lucide-react";
 import { useState } from "react";
+import { FileText, ImageIcon, Download } from "lucide-react";
 import { PageTitleHeader } from "./PageTitleHeader";
-
-const CATEGORIES = ["All", "Admission", "CET", "Examination", "University", "Circular", "Announcement"];
-
-const NOTICES = [
-  { title: "B.Sc. Nursing Admission 2026–27: CAP Round Schedule", date: "28 Sep 2026", category: "Admission", isNew: true },
-  { title: "CET Document Verification Notice", date: "22 Sep 2026", category: "CET", isNew: true },
-  { title: "MUHS Winter Examination Time Table Released", date: "15 Sep 2026", category: "Examination", isNew: false },
-  { title: "Updated Syllabus Implementation", date: "10 Sep 2026", category: "University", isNew: false },
-  { title: "Orientation Programme for First Year", date: "08 Sep 2026", category: "Circular", isNew: false },
-  { title: "Scholarship Application Deadline", date: "01 Sep 2026", category: "Announcement", isNew: false },
-];
+import {
+  loadNotices,
+  NOTICE_CATEGORIES,
+  type Notice,
+} from "./NoticeList";
 
 export function NoticesPage({ onNavigate }: { onNavigate: (p: string) => void }) {
-  const [cat, setCat] = useState("All");
-  const list = cat === "All" ? NOTICES : NOTICES.filter((n) => n.category === cat);
+  const [cat, setCat] = useState<string>("All");
+  const [notices] = useState<Notice[]>(() => loadNotices());
+
+  const filtered =
+    cat === "All" ? notices : notices.filter((n) => n.category === cat);
+
+  const sorted = [...filtered].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
+
+  const tabs = ["All", ...NOTICE_CATEGORIES];
 
   return (
     <div>
       <PageTitleHeader
-        title="Notices & Circulars"
-        subtitle="Stay updated with the latest announcements"
+        title="Notices"
+        subtitle="Latest updates, circulars and announcements"
         onNavigate={onNavigate}
       />
 
       <section className="mx-auto max-w-5xl px-4 py-14">
-        <div className="flex flex-wrap gap-2">
-          {CATEGORIES.map((c) => (
+        {/* Filter tabs */}
+        <div className="flex flex-wrap justify-center gap-2">
+          {tabs.map((t) => (
             <button
-              key={c}
-              onClick={() => setCat(c)}
-              className={`rounded-full px-3 py-1.5 text-sm font-medium ${
-                cat === c ? "bg-navy text-navy-foreground" : "border border-border bg-card hover:bg-accent"
+              key={t}
+              onClick={() => setCat(t)}
+              className={`rounded-full px-4 py-1.5 text-sm font-medium transition ${
+                cat === t
+                  ? "bg-navy text-white shadow"
+                  : "border border-border bg-card text-muted-foreground hover:border-navy/40 hover:text-navy"
               }`}
             >
-              {c}
+              {t}
             </button>
           ))}
         </div>
 
+        {/* Wide horizontal cards */}
         <div className="mt-8 space-y-3">
-          {list.map((n) => (
-            <div key={n.title} className="rounded-xl border border-border bg-card p-5 shadow-sm">
-              <div className="flex flex-wrap items-center gap-2 text-xs">
-                <Bell className="h-4 w-4 text-orange" />
-                <span className="rounded-full bg-teal/15 px-2 py-0.5 font-medium text-teal">{n.category}</span>
-                {n.isNew && <span className="rounded-full bg-orange px-2 py-0.5 font-semibold text-orange-foreground">NEW</span>}
-                <span className="ml-auto text-muted-foreground">{n.date}</span>
-              </div>
-              <p className="mt-2 font-medium text-foreground">{n.title}</p>
-              <div className="mt-3 flex gap-3">
-                <button className="text-sm font-semibold text-royal hover:underline">View Details</button>
-                <button className="flex items-center gap-1 text-sm font-semibold text-teal hover:underline">
-                  <Download className="h-3.5 w-3.5" /> PDF
-                </button>
-              </div>
+          {sorted.length === 0 && (
+            <div className="rounded-xl border bg-white p-10 text-center text-sm text-muted-foreground">
+              No notices in this category yet.
             </div>
-          ))}
+          )}
+
+          {sorted.map((n) => {
+            const isPdf =
+              n.attachmentName?.toLowerCase().endsWith(".pdf") ||
+              n.attachment?.startsWith("data:application/pdf");
+
+            return (
+              <div
+                key={n.id}
+                className="group flex flex-col items-start justify-between gap-4 rounded-xl border border-border bg-white p-4 shadow-sm transition hover:shadow-md sm:flex-row sm:items-center"
+              >
+                {/* Left side: Icon + Text */}
+                <div className="flex items-center gap-4">
+                  {/* Soft Icon Tile */}
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-orange/10 text-orange">
+                    {isPdf ? (
+                      <FileText className="h-6 w-6" />
+                    ) : (
+                      <ImageIcon className="h-6 w-6" />
+                    )}
+                  </span>
+
+                  {/* Title & Meta */}
+                  <div>
+                    <h3 className="text-base font-semibold text-navy">
+                      {n.title}
+                    </h3>
+                    <p className="mt-0.5 text-xs font-medium text-muted-foreground">
+                      {n.category} <span className="mx-1">•</span> {n.date}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Right side: Download Button */}
+                {n.attachment ? (
+                  <a
+                    href={n.attachment}
+                    download={n.attachmentName || undefined}
+                    className="flex w-full shrink-0 items-center justify-center gap-2 rounded-md bg-navy px-5 py-2 text-sm font-semibold text-white transition hover:opacity-90 sm:w-auto"
+                  >
+                    <Download className="h-4 w-4" />
+                    Download
+                  </a>
+                ) : (
+                  <span className="text-xs text-muted-foreground px-4">
+                    No file attached
+                  </span>
+                )}
+              </div>
+            );
+          })}
         </div>
       </section>
     </div>

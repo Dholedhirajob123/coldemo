@@ -1,60 +1,145 @@
-import { FileText, Download } from "lucide-react";
 import { useState } from "react";
+import { FileText, ImageIcon, Download, ExternalLink } from "lucide-react";
 import { PageTitleHeader } from "./PageTitleHeader";
 
-const CATEGORIES = ["All", "Admission Forms", "Prospectus", "Notices", "Circulars", "Academic Documents", "Important Forms"];
+export type DownloadItem = {
+  id: string;
+  title: string;
+  category: string;
+  date: string;
+  attachment: string; // base64 or URL
+  attachmentName: string;
+};
 
-const DOCS = [
-  { title: "B.Sc. Nursing Admission Form 2026–27", date: "01 Oct 2026", category: "Admission Forms" },
-  { title: "College Prospectus 2026–27", date: "15 Sep 2026", category: "Prospectus" },
-  { title: "CAP Round Admission Notice", date: "28 Sep 2026", category: "Notices" },
-  { title: "Anti-Ragging Circular", date: "05 Aug 2026", category: "Circulars" },
-  { title: "Academic Calendar 2026–27", date: "01 Jul 2026", category: "Academic Documents" },
-  { title: "Hostel Application Form", date: "10 Jun 2026", category: "Important Forms" },
+const KEY = "rcn_downloads";
+
+const DOWNLOAD_CATEGORIES = [
+  "Forms",
+  "Prospectus",
+  "Syllabus",
+  "Fee Structure",
+  "Academic Calendar",
+  "Other",
 ];
 
+function loadDownloads(): DownloadItem[] {
+  try {
+    const raw = localStorage.getItem(KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch {
+    return [];
+  }
+}
+
 export function DownloadsPage({ onNavigate }: { onNavigate: (p: string) => void }) {
-  const [cat, setCat] = useState("All");
-  const list = cat === "All" ? DOCS : DOCS.filter((d) => d.category === cat);
+  const [cat, setCat] = useState<string>("All");
+  const [downloads] = useState<DownloadItem[]>(() => loadDownloads());
+
+  const filtered =
+    cat === "All" ? downloads : downloads.filter((d) => d.category === cat);
+
+  const sorted = [...filtered].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
+
+  const tabs = ["All", ...DOWNLOAD_CATEGORIES];
 
   return (
     <div>
       <PageTitleHeader
         title="Downloads"
-        subtitle="Forms, prospectus, notices and documents"
+        subtitle="Forms, prospectus, syllabus and other documents"
         onNavigate={onNavigate}
       />
 
       <section className="mx-auto max-w-5xl px-4 py-14">
-        <div className="flex flex-wrap gap-2">
-          {CATEGORIES.map((c) => (
+        {/* Filter tabs */}
+        <div className="flex flex-wrap justify-center gap-2">
+          {tabs.map((t) => (
             <button
-              key={c}
-              onClick={() => setCat(c)}
-              className={`rounded-full px-3 py-1.5 text-sm font-medium ${
-                cat === c ? "bg-navy text-navy-foreground" : "border border-border bg-card hover:bg-accent"
+              key={t}
+              onClick={() => setCat(t)}
+              className={`rounded-full px-4 py-1.5 text-sm font-medium transition ${
+                cat === t
+                  ? "bg-navy text-white shadow"
+                  : "border border-border bg-card text-muted-foreground hover:border-navy/40 hover:text-navy"
               }`}
             >
-              {c}
+              {t}
             </button>
           ))}
         </div>
 
+        {/* Wide horizontal cards (Same as Notices) */}
         <div className="mt-8 space-y-3">
-          {list.map((d) => (
-            <div key={d.title} className="flex items-center gap-4 rounded-xl border border-border bg-card p-4 shadow-sm">
-              <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-orange/15 text-orange">
-                <FileText className="h-5 w-5" />
-              </span>
-              <div className="min-w-0 flex-1">
-                <p className="truncate font-medium">{d.title}</p>
-                <p className="text-xs text-muted-foreground">{d.category} · {d.date}</p>
-              </div>
-              <button className="flex shrink-0 items-center gap-1.5 rounded-md bg-navy px-3 py-2 text-sm font-medium text-navy-foreground hover:opacity-90">
-                <Download className="h-4 w-4" /> Download
-              </button>
+          {sorted.length === 0 && (
+            <div className="rounded-xl border bg-white p-10 text-center text-sm text-muted-foreground">
+              No downloads in this category yet.
             </div>
-          ))}
+          )}
+
+          {sorted.map((n) => {
+            const isPdf =
+              n.attachmentName?.toLowerCase().endsWith(".pdf") ||
+              n.attachment?.startsWith("data:application/pdf");
+
+            return (
+              <div
+                key={n.id}
+                className="group flex flex-col items-start justify-between gap-4 rounded-xl border border-border bg-white p-4 shadow-sm transition hover:shadow-md sm:flex-row sm:items-center"
+              >
+                {/* Left side: Icon + Text */}
+                <div className="flex items-center gap-4">
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-orange/10 text-orange">
+                    {isPdf ? (
+                      <FileText className="h-6 w-6" />
+                    ) : (
+                      <ImageIcon className="h-6 w-6" />
+                    )}
+                  </span>
+
+                  <div>
+                    <h3 className="text-base font-semibold text-navy">
+                      {n.title}
+                    </h3>
+                    <p className="mt-0.5 text-xs font-medium text-muted-foreground">
+                      {n.category} <span className="mx-1">•</span> {n.date}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Right side: Download / Open Buttons */}
+                {n.attachment ? (
+                  <div className="flex w-full shrink-0 gap-2 sm:w-auto">
+                    <a
+                      href={n.attachment}
+                      download={n.attachmentName || undefined}
+                      className="flex flex-1 items-center justify-center gap-2 rounded-md bg-navy px-5 py-2 text-sm font-semibold text-white transition hover:opacity-90 sm:flex-none"
+                    >
+                      <Download className="h-4 w-4" />
+                      Download
+                    </a>
+                    {/* Only show "Open" for PDFs where users might want to read in browser */}
+                    {isPdf && (
+                      <a
+                        href={n.attachment}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center rounded-md border border-gray-300 px-3 py-2 text-sm font-semibold text-gray-700 transition hover:bg-gray-50"
+                        title="Open in new tab"
+                      >
+                        <ExternalLink className="h-4 w-4" />
+                      </a>
+                    )}
+                  </div>
+                ) : (
+                  <span className="px-4 text-xs text-muted-foreground">
+                    No file attached
+                  </span>
+                )}
+              </div>
+            );
+          })}
         </div>
       </section>
     </div>

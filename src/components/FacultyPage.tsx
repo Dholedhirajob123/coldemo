@@ -1,78 +1,89 @@
-import { PageBackButton } from "./PageBackButton";
+import { ImageIcon } from "lucide-react";
 
-const FACULTY = [
-  { name: "Prof. S. Deshmukh", designation: "Principal", qualification: "M.Sc. Nursing", department: "Administration", experience: "20+ years" },
-  { name: "Mrs. A. Kulkarni", designation: "Vice Principal", qualification: "M.Sc. Nursing (Med-Surg)", department: "Medical Surgical Nursing", experience: "15 years" },
-  { name: "Ms. R. Patil", designation: "Associate Professor", qualification: "M.Sc. Nursing (OBG)", department: "Obstetrics & Gynaecology", experience: "12 years" },
-  { name: "Mr. V. Jadhav", designation: "Assistant Professor", qualification: "M.Sc. Nursing (CHN)", department: "Community Health Nursing", experience: "10 years" },
-  { name: "Ms. P. More", designation: "Nursing Tutor", qualification: "B.Sc. Nursing", department: "Child Health Nursing", experience: "7 years" },
-  { name: "Ms. K. Shinde", designation: "Nursing Tutor", qualification: "B.Sc. Nursing", department: "Mental Health Nursing", experience: "6 years" },
-  { name: "Mr. S. Pawar", designation: "Clinical Instructor", qualification: "B.Sc. Nursing", department: "Clinical Training", experience: "8 years" },
-  { name: "Mrs. N. Bhosale", designation: "Nursing Tutor", qualification: "GNM, B.Sc. Nursing", department: "Fundamentals of Nursing", experience: "9 years" },
-];
+export type FacultyRow = {
+  id: string;
+  srNo: number;
+  name: string;
+  designation: string;
+  qualification: string;
+  qualAsPerMuhs: "Yes" | "No";
+  experience: string;
+  expAsPerMuhs: "Yes" | "No";
+  photo: string;
+  type: "teaching" | "non-teaching";
+};
 
-export function FacultyPage({ onNavigate }: { onNavigate: (p: string) => void }) {
+const KEY = "rcn_faculty";
+
+export function loadFaculty(type: "teaching" | "non-teaching"): FacultyRow[] {
+  try {
+    const raw = localStorage.getItem(KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw) as FacultyRow[];
+      const filtered = parsed
+        .filter((f) => f.type === type)
+        .sort((a, b) => a.srNo - b.srNo);
+      if (filtered.length > 0) return filtered;
+    }
+  } catch {}
+  return [];
+}
+
+export function FacultyTable({ rows }: { rows: FacultyRow[] }) {
+  if (rows.length === 0) {
+    return (
+      <div className="rounded-xl border bg-white p-10 text-center text-sm text-muted-foreground">
+        No staff information available yet. (Add it from the admin panel.)
+      </div>
+    );
+  }
+
   return (
-    <div>
-      {/* Header */}
-      <section className="bg-navy py-16 text-center text-navy-foreground">
-        <h1 className="text-4xl font-bold">Our Faculty</h1>
-        <p className="mt-2 text-navy-foreground/70">Experienced educators dedicated to student success</p>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-4 py-14">
-        <PageBackButton onNavigate={onNavigate} />
-        
-        {/* Table Card Container */}
-        <div className="overflow-hidden rounded-xl border border-border bg-card shadow-sm">
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-sm">
-              <thead className="bg-navy text-navy-foreground">
-                <tr>
-                  <th className="px-6 py-4 font-semibold whitespace-nowrap">Name</th>
-                  <th className="px-6 py-4 font-semibold whitespace-nowrap">Designation</th>
-                  <th className="px-6 py-4 font-semibold whitespace-nowrap">Department</th>
-                  <th className="px-6 py-4 font-semibold whitespace-nowrap">Qualification</th>
-                  <th className="px-6 py-4 font-semibold whitespace-nowrap">Experience</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-border">
-                {FACULTY.map((f) => (
-                  <tr key={f.name} className="hover:bg-sky/30 transition-colors">
-                    {/* Name & Avatar */}
-                    <td className="px-6 py-4">
-                      <div className="flex items-center gap-3">
-                        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-sky text-sm font-bold text-royal">
-                          {f.name.split(" ").map((w) => w[0]).join("").slice(0, 2)}
-                        </span>
-                        <span className="font-semibold text-foreground">{f.name}</span>
-                      </div>
-                    </td>
-                    {/* Designation */}
-                    <td className="px-6 py-4 font-medium text-orange">
-                      {f.designation}
-                    </td>
-                    {/* Department */}
-                    <td className="px-6 py-4 text-muted-foreground">
-                      {f.department}
-                    </td>
-                    {/* Qualification */}
-                    <td className="px-6 py-4 text-muted-foreground">
-                      {f.qualification}
-                    </td>
-                    {/* Experience */}
-                    <td className="px-6 py-4">
-                      <span className="inline-block whitespace-nowrap rounded-full bg-teal/15 px-3 py-1 text-xs font-medium text-teal">
-                        {f.experience}
-                      </span>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
+    <div className="overflow-x-auto rounded-xl border bg-white shadow-sm">
+      <table className="w-full min-w-[1000px] border-collapse text-sm">
+        <thead>
+          <tr className="bg-navy text-white">
+            <th className="border-r border-white/15 px-3 py-3 text-left font-semibold">Sr No</th>
+            <th className="border-r border-white/15 px-3 py-3 text-left font-semibold">Name Of Staff</th>
+            <th className="border-r border-white/15 px-3 py-3 text-left font-semibold">Designation</th>
+            <th className="border-r border-white/15 px-3 py-3 text-left font-semibold">Educational Qualification</th>
+            <th className="border-r border-white/15 px-3 py-3 text-center font-semibold">Whether Qualification As per MUHS</th>
+            <th className="border-r border-white/15 px-3 py-3 text-left font-semibold">Experience</th>
+            <th className="border-r border-white/15 px-3 py-3 text-center font-semibold">Whether Experience As per MUHS</th>
+            <th className="px-3 py-3 text-center font-semibold">Photo</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((r, idx) => (
+            <tr key={r.id} className={idx % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+              <td className="border-t px-3 py-2">{r.srNo}</td>
+              <td className="border-t px-3 py-2 font-medium text-navy">{r.name}</td>
+              <td className="border-t px-3 py-2">{r.designation}</td>
+              <td className="border-t px-3 py-2">{r.qualification}</td>
+              <td className="border-t px-3 py-2 text-center">
+                <span className={`inline-block rounded-full px-2 py-0.5 text-xs font-semibold ${
+                  r.qualAsPerMuhs === "Yes" ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"
+                }`}>{r.qualAsPerMuhs}</span>
+              </td>
+              <td className="border-t px-3 py-2">{r.experience}</td>
+              <td className="border-t px-3 py-2 text-center">
+                <span className={`inline-block rounded-full px-2 py-0.5 text-xs font-semibold ${
+                  r.expAsPerMuhs === "Yes" ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"
+                }`}>{r.expAsPerMuhs}</span>
+              </td>
+              <td className="border-t px-3 py-2 text-center">
+                {r.photo ? (
+                  <img src={r.photo} alt={r.name} className="mx-auto h-12 w-12 rounded-full object-cover" />
+                ) : (
+                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-gray-100 text-gray-400">
+                    <ImageIcon className="h-5 w-5" />
+                  </div>
+                )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
